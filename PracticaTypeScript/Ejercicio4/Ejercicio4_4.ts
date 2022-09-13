@@ -13,7 +13,7 @@ interface Swimmer {
 
 // agregar alias de tipo(s) aqui
 
-type Animal = Bird | Fish;
+type animal = Bird | Fish;
 
 interface BirdLike extends Flyer, EggLayer {
 
@@ -48,7 +48,7 @@ class Fish implements FishLike {
 }
 
 function getRandomAnimal() {
-    const animals: Animal[] = [
+    const animals: animal[] = [
         new Bird('puffin'),
         new Bird('kittiwake'),
         new Fish('sea robin'),
@@ -58,7 +58,7 @@ function getRandomAnimal() {
     return animals[Math.floor(Math.random() * animals.length)];
 }
 
-function interrogateAnimal(animal: Animal = getRandomAnimal()) {
+function interrogateAnimal(animal: animal = getRandomAnimal()) {
     animal instanceof Fish ? animal.swim(10) : animal.fly(10);
     return animal.species;
 }
