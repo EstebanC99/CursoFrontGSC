@@ -61,6 +61,6 @@ export class EventsService {
   }
 
   getByID(id: number): IEvent | undefined {
-    return this.events.find(e => e.id == id);
+    return this.events.find(e => e.id === id);
   }
 }
