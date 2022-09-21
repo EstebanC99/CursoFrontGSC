@@ -1,0 +1,24 @@
+<div *ngIf="event">
+    <h2>The Event is: {{ event.name }}</h2>
+    <div>
+        <label>Date: </label>
+        <div class="paraf">{{ event.date }} </div>      
+    </div>
+    <div>
+        <label>Time: </label>
+        <div class="paraf">{{ event.time }}</div>
+    </div>
+    <div>
+        <label>Place: </label>
+        <div class="paraf">
+            {{ event.location.address }} - {{ event.location.city }} - {{ event.location.country }}
+        </div>
+    </div>
+</div>
+<div *ngIf="!event">
+    <h2 style="color: red">No existe el evento!</h2>
+</div>
+<div>
+    <input type="checkbox" [checked]="reviewed" (change)="setAsReviewed()"/> Reviewed
+</div>
+<input type="button" value="Volver atrás" (click)="returnToEvents()">
