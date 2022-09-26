@@ -1,0 +1,39 @@
+<div>
+  <form (ngSubmit)="save()" #eventForm="ngForm">
+    <div class="form-group">
+      <label for="event-name">Nombre del evento:</label>
+      <input id="name" type="text" class="form-control" name="name" [(ngModel)]="model.name" #name="ngModel" required/>
+      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Este campo es requerido!</div>
+    </div>
+    <div class="form-group">
+      <label for="date">Fecha: </label>
+      <input id="date" type="text" name="date" [(ngModel)]="model.date" #date="ngModel" required/>
+      <div [hidden]="date.valid || date.pristine" class="alert alert-danger">Este campo es requerido!</div>
+    </div>
+    <div class="form-group">
+      <label for="time">Hora: </label>
+      <input id="time" type="text" name="time" [(ngModel)]="model.time" #time="ngModel" required/>
+      <div [hidden]="time.valid || time.pristine" class="alert alert-danger">Este campo es requerido!</div>
+    </div>
+    <div class="form-group">
+      <label for="address">Dirección: </label>
+      <input id="address" type="text" name="address" [(ngModel)]="model.location.address" #address="ngModel" required/>
+      <div [hidden]="address.valid || address.pristine" class="alert alert-danger">Este campo es requerido!</div>
+    </div>
+    <div class="form-group">
+      <label for="city">Ciudad: </label>
+      <input id="city" type="text" name="city" [(ngModel)]="model.location.city" #city="ngModel" required/>
+      <div [hidden]="city.valid || city.pristine" class="alert alert-danger">Este campo es requerido!</div>
+    </div>
+    <div class="form-group">
+      <label for="country">Pais: </label>
+      <input id="country" type="text" name="country" [(ngModel)]="model.location.country" #country="ngModel" required pattern="[A-Z][a-z]*"/>
+      <div [hidden]="country.value != '' || country.pristine" class="alert alert-danger">El campo es requerido!</div>
+      <div [hidden]="country.valid || country.value == ''" class="alert alert-danger">El pais debe comenzar con mayusucula!</div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!eventForm.form.valid">Guardar</button>
+    <button type="button" class="btn btn-default" (click)="cancel()">Cancelar</button>
+    <p>{{ model.name }} {{model.date}} {{model.time}} {{model.location.address}} {{model.location.city}} {{model.location.country}}</p>
+  </form>
+</div>
